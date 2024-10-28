@@ -1,23 +1,26 @@
 import os
 import time
 import threading
-from blackboxai import AIResponder
-from main import ShellBot
+import subprocess
+from blackboxai import BlackBoxAI  # Pastikan Anda telah menginstal blackboxai
+
+class ShellBot:
+    def execute_command(self, command):
+        try:
+            result = subprocess.check_output(command, shell=True, text=True)
+            return result
+        except subprocess.CalledProcessError as e:
+            return f"Error: {e.output}"
 
 class Jarvis:
     def __init__(self):
-        self.ai_responder = AIResponder()
+        self.ai = BlackBoxAI()  # Inisialisasi blackboxai
         self.shell_bot = ShellBot()
         self.running = True
 
     def display_status(self):
         while self.running:
-            os.system('clear')  # Use 'cls' for Windows
-            print("=== Jarvis Assistant ===")
-            print("Status Daya: ON")
-            print("Status Internet: UP")
-            print("Suhu Perangkat: 25°C")
-            print("=========================")
+            os.system('clear')  # Gunakan 'cls' untuk Windows
             time.sleep(5)
 
     def chat(self):
@@ -28,10 +31,11 @@ class Jarvis:
                 self.running = False
                 break
             
-            response = self.ai_responder.get_response(user_input)
+            # Menggunakan blackboxai untuk mendapatkan respons
+            response = self.ai.get_response(user_input)  # Ganti dengan metode yang sesuai dari blackboxai
             print(f"Jarvis: {response}")
 
-            # Execute shell command if response contains it
+            # Eksekusi perintah shell jika respons mengandungnya
             if response.startswith("execute:"):
                 command = response.split("execute:")[1].strip()
                 command_result = self.shell_bot.execute_command(command)
