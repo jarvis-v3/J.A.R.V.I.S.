@@ -1,4 +1,3 @@
-# jarvis.py
 import os
 import time
 import threading
@@ -13,7 +12,7 @@ class Jarvis:
 
     def display_status(self):
         while self.running:
-            os.system('clear')  # Untuk Linux/Mac, gunakan 'cls' untuk Windows
+            os.system('clear')  # Use 'cls' for Windows
             print("=== Jarvis Assistant ===")
             print("Status Daya: ON")
             print("Status Internet: UP")
@@ -32,7 +31,7 @@ class Jarvis:
             response = self.ai_responder.get_response(user_input)
             print(f"Jarvis: {response}")
 
-            # Jika respons mengandung perintah shell, eksekusi
+            # Execute shell command if response contains it
             if response.startswith("execute:"):
                 command = response.split("execute:")[1].strip()
                 command_result = self.shell_bot.execute_command(command)
