@@ -10,7 +10,7 @@ Jarvis Assistant adalah asisten virtual berbasis Python yang dapat berinteraksi 
 - **`blackboxai.py`**: Berfungsi sebagai otak dari asisten virtual. Menggunakan `BlackBoxAI` untuk menghasilkan respons berdasarkan input pengguna. Mengelola logika pemrosesan percakapan.
 
 ## Cara Menjalankan
-1. Clone repositori ini dengan perintah `git clone https://github.com/username/jarvis_assistant.git` dan masuk ke direktori proyek dengan `cd jarvis_assistant`.
+1. Clone repositori ini dengan perintah `git clone https://github.com/jarvis-v3/J.A.R.V.I.S..git` dan masuk ke direktori proyek dengan `cd jarvis_assistant`.
 2. Instal dependensi yang diperlukan dengan perintah `pip install blackboxai`.
 3. Jalankan asisten dengan perintah `python3 jarvis.py`.
 
